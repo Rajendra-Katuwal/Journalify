@@ -1,0 +1,69 @@
+# ======================
+# Python / Django
+# ======================
+*.py[cod]
+__pycache__/
+*.sqlite3
+*.db
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+*.egg
+*.cover
+.coverage
+coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.pytest_cache/
+.env
+.env.*
+.venv/
+venv/
+ENV/
+env/
+backend/.env
+backend/.env.*
+
+# Django specific
+backend/db.sqlite3
+backend/media/
+backend/static/
+backend/staticfiles/
+backend/.pytest_cache/
+backend/__pycache__/
+backend/**/__pycache__/
+**/migrations/__pycache__/
+**/migrations/*.pyc
+
+# Optional: ignore all migrations
+**/migrations/
+
+# ======================
+# Node / React
+# ======================
+frontend/node_modules/
+frontend/.env
+frontend/.env.*
+frontend/.next/
+frontend/.turbo/
+frontend/.cache/
+frontend/public/static/
+frontend/dist/
+frontend/build/
+frontend/yarn.lock
+frontend/package-lock.json
+
+# Vite / CRA / Next.js artifacts
+frontend/.vite/
+frontend/.parcel-cache/
+frontend/coverage/
+frontend/tsconfig.tsbuildinfo
+
+# ======================
+# IDEs and Editors
+# ======================
+.vscode/
+.idea/
+*.code-workspace
