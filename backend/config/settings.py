@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     
     # Project apps
     'apps.authentication',
-    # 'apps.journal',
+    'apps.journal',
     # 'apps.insights',
     # 'apps.storage',
 ]
