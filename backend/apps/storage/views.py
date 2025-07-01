@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from .serializers import UploadedFileSerializer
 from .models import UploadedFile
-from .utils import upload_to_cloudinary
+from .tasks import upload_file_to_cloudinary
 
 
 class UploadFileView(generics.CreateAPIView):
@@ -18,11 +18,16 @@ class UploadFileView(generics.CreateAPIView):
     
     def perform_create(self, serializer):
         instance = serializer.save(user=self.request.user)
-        cloud_url = upload_to_cloudinary(instance.file)
-        instance.file_url = cloud_url
-        instance.is_uploaded_to_cloud = True
-        instance.save()
+        upload_file_to_cloudinary.delay(instance.id)
 
+class UploadedFileListView(generics.ListAPIView):
+    serializer_class = UploadedFileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        # Return files only uploaded by current user
+        return UploadedFile.objects.filter(user=self.request.user).order_by('-uploaded_at')
+    
 class UploadedFileDetailView(generics.RetrieveAPIView):
     serializer_class = UploadedFileSerializer
     permission_classes = [permissions.IsAuthenticated]
