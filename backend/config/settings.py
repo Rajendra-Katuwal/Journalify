@@ -141,3 +141,8 @@ cloudinary.config(
     api_secret = os.getenv('CLOUDINARY_API_SECRET'),
     secure = True
 )
+
+# Celerey Configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Update if using Docker or cloud Redis
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
